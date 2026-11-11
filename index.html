@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173c45" />
+    <meta name="description" content="Drive, race three laps around the Harbor Circuit, and explore Marina Streets, a tiny procedural coastal city." />
+    <meta property="og:title" content="Marina Streets · Harbor Circuit" />
+    <meta property="og:description" content="A free-to-play coastal city driving game. Race the Harbor Circuit or roam the streets." />
+    <meta property="og:type" content="website" />
+    <title>Marina Streets</title>
+  </head>
+  <body>
+    <canvas id="game" aria-label="Marina Streets game"></canvas>
+    <div id="ui">
+      <header class="topbar"><div class="brand"><span class="sunmark">◉</span><div><b>MARINA</b><small>STREETS · COASTAL CITY</small></div></div><div class="status"><span id="speed">0 km/h</span><span id="money">₹ 500</span><span class="health"><i id="health"></i></span><button id="pauseBtn" aria-label="Pause">Ⅱ</button></div></header>
+      <section class="mission-card"><small>ONLY MISSION · HARBOR CIRCUIT</small><strong id="missionText">Drive into the red start circle and accept the three-lap Harbor Circuit.</strong></section>
+      <section id="checkpointGuide" class="checkpoint-guide hidden"><span id="checkpointArrow">↑</span><div><b>NEXT CHECKPOINT</b><small id="checkpointDistance">— m</small></div></section>
+      <section class="map-card"><canvas id="map" width="156" height="156"></canvas><div><b>HARBOR CIRCUIT</b><small>Roads · S Start · F Finish</small><small>Colored dots · racers</small></div></section>
+      <div class="bottom-hints"><span>WASD MOVE / DRIVE</span><span>SHIFT RUN / DRIFT</span><span>SPACE JUMP / BRAKE</span><span id="vehicleHint">E  Enter nearby vehicle</span></div>
+      <div id="touchControls" class="touch-controls" aria-label="Touch game controls">
+        <div class="touch-pad" aria-label="Movement and steering">
+          <button type="button" data-key="KeyW" aria-label="Move forward">▲</button>
+          <button type="button" data-key="KeyA" aria-label="Move left">◀</button>
+          <button type="button" data-key="KeyS" aria-label="Move backward">▼</button>
+          <button type="button" data-key="KeyD" aria-label="Move right">▶</button>
+        </div>
+        <div class="touch-actions">
+          <button type="button" id="touchInteract" aria-label="Enter or exit vehicle">E</button>
+          <button type="button" data-key="Space" aria-label="Jump or brake">JUMP<br> BRAKE</button>
+          <button type="button" data-key="ShiftLeft" aria-label="Run or drift">RUN<br> DRIFT</button>
+        </div>
+      </div>
+      <div id="toast" class="toast"></div><div id="fps">60 FPS</div>
+      <div id="raceDialog" class="race-layer hidden"><div class="pause-card race-card"><div class="eyebrow">RED START CIRCLE</div><h1>Harbor Circuit</h1><p id="racePromptText">Four cars. Three laps. Enter one of your vehicles, then return here to accept the race.</p><button id="raceAccept" class="primary" disabled>Accept Three-Lap Race <span>→</span></button><button id="raceLater" class="resume">Maybe later</button></div></div>
+      <div id="raceResult" class="race-layer hidden"><div class="pause-card race-card"><div class="eyebrow">HARBOR CIRCUIT · 3 LAPS</div><h1 id="raceResultPlace">You finished 1st</h1><p>Your rivals have pulled off the road and parked. Choose another race or continue exploring Marina Streets.</p><button id="raceAgain" class="primary">Race Again <span>↻</span></button><button id="raceContinue" class="resume">Continue Roaming</button></div></div>
+      <div id="pause" class="pause-layer"><div class="pause-card"><div class="eyebrow">WELCOME TO THE COAST</div><h1>Marina Streets</h1><p>A little sun, a lot of city. Wander the waterfront, find a ride, and make your own route.</p><div class="controls"><div><b>WASD</b><small>Move</small></div><div><b>SHIFT</b><small>Run / drift</small></div><div><b>SPACE</b><small>Jump / brake</small></div><div><b>E</b><small>Enter / exit</small></div><div><b>MOUSE</b><small>Look around</small></div></div><label class="setting">Graphics quality<select id="quality"><option>Low</option><option>Medium</option></select></label><button id="start" class="primary">Start Exploring <span>→</span></button><button id="resume" class="resume">Resume game</button><button id="creditsOpen" class="resume">Credits & licenses</button><small class="footnote">Original city · Procedural world · Made for the open road</small></div></div>
+      <div id="credits" class="credits-layer hidden"><div class="pause-card"><div class="eyebrow">ASSET CREDITS</div><h1>Credits</h1><p>This checkout uses the procedural fallback models. Optional packs below are verified CC0 sources; no pack archive could be downloaded in this environment.</p><ul><li><a href="https://kenney.nl/assets/car-kit" target="_blank" rel="noreferrer">Car Kit</a> — Kenney, CC0</li><li><a href="https://kenney.nl/assets/animated-characters-protagonists" target="_blank" rel="noreferrer">Animated Characters Protagonists</a> — Kenney, CC0</li><li><a href="https://kenney.nl/assets/city-kit-suburban" target="_blank" rel="noreferrer">City Kit (Suburban)</a> — Kenney, CC0</li><li><a href="https://kenney.nl/assets/city-kit-roads" target="_blank" rel="noreferrer">City Kit (Roads)</a> — Kenney, CC0</li></ul><button id="creditsClose" class="primary">Back</button></div></div>
+      <div id="loading" class="loading-layer"><div class="loading-card"><div class="sunmark">◉</div><strong>MARINA STREETS</strong><span>Preparing the city…</span><i></i></div></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
